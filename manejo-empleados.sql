@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-08-2022 a las 00:37:15
+-- Tiempo de generación: 28-08-2022 a las 00:48:34
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -46,8 +46,10 @@ CREATE TABLE `user` (
   `num_doc_user` varchar(15) NOT NULL,
   `tel_user` varchar(10) NOT NULL,
   `email_user` varchar(70) NOT NULL,
+  `password_user` varchar(260) NOT NULL,
   `estado` tinyint(4) NOT NULL DEFAULT 1,
-  `change_password_user` tinyint(4) NOT NULL DEFAULT 0
+  `change_password_user` tinyint(4) NOT NULL DEFAULT 0,
+  `rol_user` tinyint(4) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
