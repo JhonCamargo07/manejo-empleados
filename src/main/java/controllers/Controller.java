@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
 package controllers;
 
 import ModelDAO.*;
@@ -85,7 +81,7 @@ public class Controller extends HttpServlet {
         switch (option) {
             case 1: //Login
                 if (email.equals("") || pass.equals("")) {
-                    this.generarMensaje(request, response, "Error en los datos", "Los datos no pueden ser nulos, verifiquelos e intente nuevamente", "index.jsp");
+                    this.generarMensaje(request, response, false, "Error en los datos", "Los datos no pueden ser nulos, verifiquelos e intente nuevamente", "index.jsp");
                 } else {
                     this.login(request, response, email, pass);
                 }
@@ -95,14 +91,14 @@ public class Controller extends HttpServlet {
                 break;
             case 3: //Insert
                 if (nameUser.equals("") || lastNameUser.equals("") || typeDocUser.equals("") || numDocUser.equals("") || telUser.equals("") || email.equals("") || pass.equals("") || estadoUser.equals("") || rolUser.equals("")) {
-                    this.generarMensaje(request, response, "Error en los datos", "Los datos no pueden ser nulos, verifiquelos e intente nuevamente", "index.jsp");
+                    this.generarMensaje(request, response, false, "Error en los datos", "Los datos no pueden ser nulos, verifiquelos e intente nuevamente", "index.jsp");
                 } else {
                     this.insert(request, response, userVo, typeVo);
                 }
                 break;
             case 4: //Update
                 if (idUser.equals("") || nameUser.equals("") || lastNameUser.equals("") || typeDocUser.equals("") || numDocUser.equals("") || telUser.equals("") || email.equals("") || pass.equals("") || estadoUser.equals("") || rolUser.equals("")) {
-                    this.generarMensaje(request, response, "Error en los datos", "Los datos no pueden ser nulos, verifiquelos e intente nuevamente", "index.jsp");
+                    this.generarMensaje(request, response, false, "Error en los datos", "Los datos no pueden ser nulos, verifiquelos e intente nuevamente", "index.jsp");
                 } else {
                     this.update(request, response, userVo, typeVo);
                 }
@@ -112,10 +108,11 @@ public class Controller extends HttpServlet {
         }
     }
 
-    private void generarMensaje(HttpServletRequest request, HttpServletResponse response, String titulo, String mensaje, String redirigirA) throws ServletException, IOException {
+    private void generarMensaje(HttpServletRequest request, HttpServletResponse response, boolean operationSuccessful, String titulo, String mensaje, String redirigirA) throws ServletException, IOException {
         request.setAttribute("titulo", titulo);
         request.setAttribute("mensaje", mensaje);
-        request.getRequestDispatcher("index.jsp").forward(request, response);
+        request.setAttribute("operationSuccessful", String.valueOf(operationSuccessful));
+        request.getRequestDispatcher(redirigirA).forward(request, response);
     }
 
     private void login(HttpServletRequest request, HttpServletResponse response, String email, String pass) throws ServletException, IOException {
@@ -123,8 +120,9 @@ public class Controller extends HttpServlet {
         if (userVo != null) {
             session = request.getSession(true);
             session.setAttribute("userVo", userVo);
+            response.sendRedirect("menu.jsp");
         } else {
-            this.generarMensaje(request, response, "Datos erroneos", "No se encontro ningun usuario con esas credenciales", "index.jsp");
+            this.generarMensaje(request, response, false, "Datos erroneos", "No se encontro ningun usuario con esas credenciales", "login.jsp");
         }
     }
 
@@ -138,7 +136,7 @@ public class Controller extends HttpServlet {
 
         session.invalidate();
 
-        this.generarMensaje(request, response, "Sesion cerrada", "La sesión se cerró con exito, sigue disfrutando de nuestros servicios", "index.jsp");
+        this.generarMensaje(request, response, true, "Sesion cerrada", "La sesión se cerró con exito, sigue disfrutando de nuestros servicios", "index.jsp");
     }
 
     private void insert(HttpServletRequest request, HttpServletResponse response, UserVO userVo, TypeDocVO typeVo) throws ServletException, IOException {
@@ -149,21 +147,21 @@ public class Controller extends HttpServlet {
             mensaje = "¡Bienvenido!\nAcabas de registrarte en nuestro sitio web, es un placer que pertenezcas a esta gran familia.";
             try {
                 SendEmail.sendMail(server, port, mail, password, userVo.getEmailUser(), asunto, mensaje);
-                generarMensaje(request, response, "Usuario registrado", "El usuario se registró corectamente", "insert.jsp");
+                generarMensaje(request, response, true, "Usuario registrado", "El usuario se registró corectamente", "insert.jsp");
             } catch (MessagingException ex) {
                 System.out.println("Ocurrio un error al enviar el correo");
                 Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
-            generarMensaje(request, response, "Error al registrar el usuario", "Ocurrió un error al tratar de registrar al usuario, recargue la página e intente nuevamente", "insert.jsp");
+            generarMensaje(request, response, false, "Error al registrar el usuario", "Ocurrió un error al tratar de registrar al usuario, recargue la página e intente nuevamente", "insert.jsp");
         }
     }
 
     private void update(HttpServletRequest request, HttpServletResponse response, UserVO userVo, TypeDocVO typeVo) throws ServletException, IOException {
         if (userDao.update(userVo, typeVo)) {
-            generarMensaje(request, response, "Usuario actualizado", "El usuario se actualizó corectamente", "insert.jsp");
+            generarMensaje(request, response, true, "Usuario actualizado", "El usuario se actualizó corectamente", "insert.jsp");
         } else {
-            generarMensaje(request, response, "Error al actualizar el usuario", "Ocurrió un error al tratar de actualizar al usuario, recargue la página e intente nuevamente", "insert.jsp");
+            generarMensaje(request, response, false, "Error al actualizar el usuario", "Ocurrió un error al tratar de actualizar al usuario, recargue la página e intente nuevamente", "insert.jsp");
         }
     }
 

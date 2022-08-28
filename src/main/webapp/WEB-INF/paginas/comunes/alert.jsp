@@ -1,9 +1,12 @@
 <%
-    if (request.getAttribute("titulo") != null || request.getAttribute("titulo") != null) {
+    if (request.getAttribute("titulo") != null || session.getAttribute("titulo") != null) {
 %>
 <script>
-    alertaDiminuta("success", "UsuarioRegistrado");
+//    alertaFlotante("Hola", "Holaaa", "#12a5c7", "error");
+    alertaDiminuta("error", "holaa");
 </script>
+
+<p>${titulo}</p>
 <%
     }
 %>

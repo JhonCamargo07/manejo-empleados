@@ -32,7 +32,7 @@ public class Conexion {
             dataSource.setUrl(JDBC_URL);
             dataSource.setUsername(JDBC_USER);
             dataSource.setPassword(JDBC_PASS);
-            dataSource.setInitialSize(25);
+            dataSource.setInitialSize(1);
         }
         return dataSource;
     }

@@ -171,7 +171,7 @@
                 <a href="login.jsp"><button class="btn btn-outline-orange my-2 my-sm-0 me-2" type="submit">
                         <svg class="bi  me-2" width="20" height="20" fill="currentColor">
                             <use xlink:href="util/icons/bootstrap-icons.svg#box-arrow-in-right" />
-                        </svg>Iniciar sesión</button></a>
+                        </svg>Iniciar sesi&#243;n</button></a>
                 <button class="btn btn-primary my-2 my-sm-0" type="submit">
                     <svg class="bi  me-2" width="20" height="20" fill="currentColor">
                         <use xlink:href="util/icons/bootstrap-icons.svg#download" />
@@ -190,14 +190,14 @@
                         modi provident suscipit voluptatem adipisci consequatur dolor! Dolor deleniti animi labore
                         totam
                         praesentium perspiciatis nemo similique quas.</p>
-                    <a href="login.html" class="btn btn-primary text-white fw-bolder mb-5">Abre tu cuenta aquí</a>
+                    <a href="login.html" class="btn btn-primary text-white fw-bolder mb-5">Abre tu cuenta aqu&#237;</a>
                     <div class="d-flex me-4">
                         <div class="d-flex mb-4 me-4">
                             <svg class="bi text-dark me-1" width="50" height="50" fill="currentColor">
                                 <use xlink:href="util/icons/bootstrap-icons.svg#apple" />
                             </svg>
                             <div>
-                                <small>Consíguela en</small>
+                                <small>cons&#237;guela en</small>
                                 <p class="fw-bold mb-0">Apple</p>
                             </div>
                         </div>
@@ -206,7 +206,7 @@
                                 <use xlink:href="util/icons/bootstrap-icons.svg#google-play" />
                             </svg>
                             <div>
-                                <small>Consíguela en</small>
+                                <small>cons&#237;guela en</small>
                                 <p class="fw-bold mb-0">Apple</p>
                             </div>
                         </div>

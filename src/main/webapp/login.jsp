@@ -8,12 +8,12 @@
     <link rel="stylesheet" href="util/css/bootstrap.css" />
 <!--    <link rel="stylesheet" href="util/css/style.css" />
     <link rel="stylesheet" href="util/css/sass.css" />-->
-    <title>Iniciar sesión</title>
+    <title>Iniciar sesi&#243;n</title>
 </head>
 
 <body style="background: #f1f1f1">
 
-    <a href="index.html">
+    <a href="index.jsp">
         <div class="position-absolute bg-white rounded-circle py-1 px-2 mx-3 mt-2">
             <svg class="bi text-rojo-oscuro" width="1rem" height="1rem" fill="currentColor">
                 <use xlink:href="util/icons/bootstrap-icons.svg#arrow-90deg-left" />
@@ -48,26 +48,27 @@
                         </div> -->
                         <h2 class="fw-bold text-center pt-2 mb-4">Ingrese con su cuenta</h2>
                         <!-- LOGIN -->
-                        <form action="${pageContext.request.contextPath}/" method="POST" class="needs-validation" novalidate>
+                        <form action="${pageContext.request.contextPath}/User" method="POST" class="needs-validation" novalidate>
                             <div class="mb-3">
-                                <label for="email" class="form-label">Correo electrónico
+                                <label for="email" class="form-label">Correo electr&#243;nico
                                     <span class="text-danger">*</span></label>
                                 <input type="email" class="form-control" name="email" id="email" placeholder="janedoe@mail.com" minlength="10"
                                     required />
+                                <input type="hidden" name="option" value="1"/>
                                 <span class="invalid-feedback text-size-r">El correo solo puede contener letras,
-                                    números, puntos,
+                                    n&#250;mero, puntos,
                                     guiones, guion bajo, debe ser un correo válido y no puede
                                     estar vacío</span>
                                 <span class="valid-feedback">Correo valido</span>
                             </div>
                             <div class="mb-3">
-                                <label for="password" class="form-label">Contraseña <span
+                                <label for="password" class="form-label">Contrase&#241;a <span
                                         class="text-danger">*</span></label>
-                                <input type="password" class="form-control" name="password" id="password" placeholder=""
+                                <input type="password" class="form-control" name="pass" id="password" placeholder=""
                                     minlength="10" maxlength="30" required />
-                                <span class="invalid-feedback text-size-r">La contraseña debe ser de 10 a 30
+                                <span class="invalid-feedback text-size-r">La contrase&#241;a debe ser de 10 a 30
                                     caracteres</span>
-                                <span class="valid-feedback">Contraseña valida</span>
+                                <span class="valid-feedback">Contrase&#241;a valida</span>
                             </div>
                             <div class="mb-4 form-check">
                                 <input type="checkbox" name="connected" class="form-check-input" />
@@ -78,13 +79,13 @@
                                 <button type="submit"
                                     class="btn btn-primary text-white w-100 fw-bold text-size-18 px-3 fw-bold"
                                     id="btnIniciarSesion">
-                                    Iniciar sesión
+                                    Iniciar sesi&#243;n
                                 </button>
                             </div>
                         </form>
                         <!-- /LOGIN -->
                         <div class="text-center text-size-r">
-                            <span><a href="" class="">Recuperar contraseña</a></span>
+                            <span><a href="" class="">Recuperar contrase&#241;a</a></span>
                         </div>
                     </div>
                     <div class="my-1 w-100 d-none py-3" id="formSignUp">
