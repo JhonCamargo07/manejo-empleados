@@ -5,11 +5,24 @@ import javax.mail.*;
 import javax.mail.internet.*;
 
 /**
- *
- * @author Camargo
+ *Esta clase se encargará de enviar los correos
+ * @author Jhon Camargo
+ * @version 1.0.0
  */
 public class SendEmail {
 
+    /**
+     * Este metodo se encarga de enviar correos
+     * @param server, el servidor que usará para ser enviado
+     * @param port, el puerto que se utilizará para enviar el correo
+     * @param mail,la direccion de correo con la que se enviara al destinatario
+     * @param password, contraseña de la persona que va a enviar el correo (contrtaseña del parametro anterior)
+     * @param address, email al que se enviara el correo (destinatario)
+     * @param affair, asunto con el que se enviara el correo
+     * @param message, mensaje con el que se enviara el correo
+     * @throws AddressException, en caso de que ocurra algun error con los correos
+     * @throws MessagingException, en caso de que ocurra un error al enviar el correo
+     */
     public static void sendMail(String server, String port, final String mail, final String password, String address, String affair, String message) throws AddressException, MessagingException {
         // Configuracion del SMTP
         Properties property = new Properties();

@@ -2,7 +2,7 @@ let alertaFlotante = (titulo, texto, colorBoton, imagen) => {
     swal.fire({
         title: `${titulo}`,
         text: `${texto}`,
-        confirmButtonText: 'Ok, entendí',
+        confirmButtonText: 'Ok, entend&#237;',
         confirmButtonColor: `${colorBoton}`,
         // imageUrl: `${imagen}`,
         // imageWidth: "auto",

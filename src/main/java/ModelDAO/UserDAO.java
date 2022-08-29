@@ -26,6 +26,12 @@ public class UserDAO extends Conexion implements IUserDAO {
     private String sql = "";
     private boolean operacionSuccesfull = false;
 
+    /**
+     * Este metodo nos servira para iniciar sesion
+     * @param email, el email del usuario
+     * @param password, la contraseña del usuario
+     * @return UserVO, retorna los datos del usuario, si es que esta en la bd
+     */
     public UserVO login(String email, String password) {
         UserVO userVo = null;
         sql = "SELECT * FROM user WHERE BINARY email_user = ?";
@@ -51,6 +57,11 @@ public class UserDAO extends Conexion implements IUserDAO {
         return userVo;
     }
     
+    /**
+     * Este metodo es para saber si un email ya se encuentra en la bd, ya que el email en la bd debe ser unico
+     * @param email, email con el que se planean registrar
+     * @return boolean, retorna si esta o no el email en la bd
+     */
     public boolean isEmailBD(String email) {
         boolean existeEmailInBD = false;
         sql = "SELECT * FROM user WHERE BINARY email_user = ?";
@@ -74,6 +85,11 @@ public class UserDAO extends Conexion implements IUserDAO {
         return existeEmailInBD;
     }
     
+    /**
+     * Este metodo es para saber si un numero de documento ya se encuentra en la bd, ya que el numero de doc en la bd debe ser unico
+     * @param numDoc, numero de documento con el que se planea registrar
+     * @return boolean, retorna si esta o no el num doc en la bd
+     */
     public boolean isNumDocBD(String numDoc) {
         boolean existeNumDocInBD = false;
         sql = "SELECT * FROM user WHERE BINARY num_doc_user = ?";
